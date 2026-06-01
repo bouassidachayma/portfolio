@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chayma Bouassida</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- FEMININE DESIGN – SOFT PASTEL PALETTE ---------- */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg-primary: #fff9f7;
+        --bg-secondary: #fff0ed;
+        --text-primary: #3e2a2a;
+        --text-secondary: #8b6b6b;
+        --accent: #e8a0a0;
+        --accent-dark: #d47b7b;
+        --accent-soft: #fce4e0;
+        --border: #fad7d0;
+        --card-bg: #ffffff;
+        --transition: all 0.3s ease;
+    }
+
+    body.dark {
+        --bg-primary: #2a2323;
+        --bg-secondary: #3a2f2f;
+        --text-primary: #fae6e6;
+        --text-secondary: #e0c0c0;
+        --border: #5e4b4b;
+        --card-bg: #3a2f2f;
+        --accent: #d99494;
+        --accent-dark: #c07a7a;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    /* ---------- HEADER / NAV ---------- */
+    .header {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 249, 247, 0.92);
+        backdrop-filter: blur(12px);
+        z-index: 1000;
+        border-bottom: 1px solid var(--border);
+        transition: background 0.3s;
+    }
+    body.dark .header {
+        background: rgba(42, 35, 35, 0.92);
+    }
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+    }
+    .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--accent-dark);
+        letter-spacing: -0.3px;
+    }
+    .nav__links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    .nav__links a {
+        text-decoration: none;
+        font-weight: 500;
+        color: var(--text-secondary);
+        transition: var(--transition);
+        position: relative;
+    }
+    .nav__links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s;
+        border-radius: 2px;
+    }
+    .nav__links a:hover::after {
+        width: 100%;
+    }
+    .nav__links a:hover {
+        color: var(--accent-dark);
+    }
+    .theme-toggle {
+        background: var(--accent-soft);
+        border: none;
+        border-radius: 40px;
+        padding: 6px 14px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: var(--transition);
+        color: var(--accent-dark);
+    }
+
+    /* ---------- HERO SECTION WITH PHOTO ---------- */
+    .hero {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        padding: 4rem 0;
+    }
+    .hero__content {
+        flex: 1;
+    }
+    .hero__image {
+        flex-shrink: 0;
+        margin-left: 2rem;
+    }
+    .hero__image img {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 12px 28px rgba(232, 160, 160, 0.25);
+        border: 4px solid var(--accent-soft);
+        transition: var(--transition);
+    }
+    .hero__image img:hover {
+        transform: scale(1.02);
+        box-shadow: 0 18px 32px rgba(232, 160, 160, 0.35);
+    }
+    .hero__greeting {
+        display: inline-block;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--accent-dark);
+        background: var(--accent-soft);
+        padding: 0.2rem 1rem;
+        border-radius: 40px;
+        margin-bottom: 1.2rem;
+    }
+    .hero__title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.2rem;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+    .hero__description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 550px;
+        margin-bottom: 2rem;
+    }
+    .button {
+        display: inline-flex;
+        padding: 0.75rem 1.8rem;
+        border-radius: 40px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        cursor: pointer;
+        border: none;
+    }
+    .button--primary {
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 4px 10px rgba(232, 160, 160, 0.3);
+    }
+    .button--primary:hover {
+        background: var(--accent-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(232, 160, 160, 0.4);
+    }
+    .button--secondary {
+        background: transparent;
+        color: var(--text-primary);
+        border: 1px solid var(--accent);
+    }
+    .button--secondary:hover {
+        border-color: var(--accent-dark);
+        background: var(--accent-soft);
+        transform: translateY(-3px);
+    }
+    .hero__cta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    /* ---------- SECTION TITLES ---------- */
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        color: var(--text-primary);
+        letter-spacing: -0.2px;
+    }
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--accent);
+        margin: 12px auto 0;
+        border-radius: 4px;
+    }
+
+    /* ---------- SKILLS ---------- */
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin: 2rem 0 3rem;
+    }
+    .skills-list span {
+        background: var(--accent-soft);
+        color: var(--accent-dark);
+        padding: 8px 18px;
+        border-radius: 40px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: var(--transition);
+        border: 1px solid var(--border);
+    }
+    .skills-list span:hover {
+        background: var(--accent);
+        color: white;
+        transform: scale(1.05);
+    }
+
+    /* ---------- PROJECT CARDS (VIDEO) ---------- */
+    .projects__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    .project-card {
+        background: var(--card-bg);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+        transition: var(--transition);
+        border: 1px solid var(--border);
+    }
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 30px -12px rgba(232, 160, 160, 0.25);
+    }
+    .project-card__media {
+        width: 100%;
+        height: 180px;
+        background: linear-gradient(135deg, #fbe9e7 0%, #f8d0d0 100%);
+        overflow: hidden;
+    }
+    .project-card__media video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .project-card__content {
+        padding: 1.5rem;
+    }
+    .project-card__title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+    }
+    .project-card__description {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+    .project-card__tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.2rem;
+    }
+    .project-card__tech span {
+        background: var(--bg-secondary);
+        padding: 0.25rem 0.9rem;
+        border-radius: 40px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--accent-dark);
+    }
+    .project-card__links {
+        display: flex;
+        gap: 1.2rem;
+    }
+    .project-card__link {
+        text-decoration: none;
+        font-weight: 500;
+        color: var(--accent-dark);
+        transition: var(--transition);
+        font-size: 0.9rem;
+    }
+    .project-card__link:hover {
+        text-decoration: underline;
+        color: var(--accent);
+    }
+
+    /* ---------- TIMELINE ---------- */
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    .timeline__item {
+        padding: 0.8rem 0;
+        border-bottom: 1px dashed var(--border);
+    }
+    .timeline__date {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent-dark);
+        margin-bottom: 0.4rem;
+    }
+    .timeline__title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+    }
+    .timeline__company {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    /* ---------- EDUCATION ---------- */
+    .education-list {
+        margin: 0 0 3rem 1.5rem;
+        list-style-type: circle;
+    }
+    .education-list li {
+        margin-bottom: 0.7rem;
+        color: var(--text-secondary);
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 1.5rem 0 2rem;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    .contact-links a {
+        text-decoration: none;
+        color: var(--text-primary);
+        font-weight: 500;
+        transition: var(--transition);
+        background: var(--accent-soft);
+        padding: 0.5rem 1.2rem;
+        border-radius: 40px;
+    }
+    .contact-links a:hover {
+        background: var(--accent);
+        color: white;
+        transform: scale(1.03);
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+        text-align: center;
+        padding: 2rem;
+        border-top: 1px solid var(--border);
+        margin-top: 2rem;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+    }
+
+    /* ---------- SCROLL REVEAL ---------- */
+    .reveal {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+        flex-direction: column;
+        text-align: center;
+        }
+        .hero__image {
+        margin-left: 0;
+        margin-top: 2rem;
+        }
+        .hero__title {
+        font-size: 2rem;
+        }
+        .nav__links {
+        gap: 1rem;
+        }
+        .projects__grid {
+        grid-template-columns: 1fr;
+        }
+    }
+    
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="nav container">
+      <a href="#" class="logo">Chayma Bouassida</a>
+      <ul class="nav__links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Dark mode">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container reveal">
+      <div class="hero__content">
+        <span class="hero__greeting">Bonjour, I'm Chayma</span>
+        <h1 class="hero__title">Frontend Developer &<br>UI/UX Designer</h1>
+        <p class="hero__description">I design and build digital experiences that feel as beautiful as they are functional — with a soft touch and strong code.</p>
+        <div class="hero__cta">
+          <a href="#projects" class="button button--primary"> See my work</a>
+          <a href="CV_Chayma_Bouassida.pdf" class="button button--secondary" id="downloadCV">📄 Download CV</a>
+        </div>
+      </div>
+      <div class="hero__image">
+          <img src="photo personelle.jpg" alt="Chayma Bouassida">
+      </div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Tech & Tools</h2>
+      <div class="skills-list">
+      <span>HTML5/CSS3</span>
+      <span>JavaScript</span>
+      <span>Java</span>
+      <span>Java EE (Servlets, JSP)</span>
+      <span>MySQL</span>
+      <span>pl/SQL</span>
+      <span>SQLite</span>
+      <span>php</span>
+      <span>Git & GitHub</span>
+      <span>Responsive Design</span>
+      <span>Agile Methodologies</span>
+      <span>Problem Solving</span>
+      <span>Team Collaboration</span>
+      <span>Adaptability</span>
+      <span>Strong Communication</span>
+      <span>Continuous Learning</span>
+      <span>Time Management</span>
+    </div>
+    </section>
+
+    <section id="projects" class="container reveal">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects__grid">
+        <div class="project-card">
+            <div class="project-card__media">
+                <video autoplay muted loop playsinline>
+                <source src="Média1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+            </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">Business Casual – Meal Platform</h3>
+            <p class="project-card__description">Personalized meal plans based on health profile, allergies, and goals. Includes intelligent recommendations, chatbot, and nutrition info.</p>
+            <div class="project-card__tech"><span>Angular</span><span>Node.js</span><span>SQLite</span><span>PostMan</span></div>
+          </div>
+        </div>
+        <div class="project-card">
+            <div class="project-card__media">
+                <video autoplay muted loop playsinline>
+                <source src="Média2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+            </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">Smart Diet Planner</h3>
+            <p class="project-card__description">A Java EE web app that generates personalized 7‑day meal plans. Users input their profile, health conditions, and allergies; the system queries a MySQL database of 46 meals and filters them accordingly. Features an animated UI, calorie progress bars, a nutrition chatbot, and full authentication (login/register with session filter).</p>
+            <div class="project-card__tech"><span>Servlets</span><span>JSP</span><span>JDBC</span><span>MySQL</span></div>
+            <div class="project-card__links">
+                <a href="https://github.com/bouassidachayma/smart-diet-planner.git" class="project-card__link" target="_blank">GitHub →</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+                <div class="project-card__media">
+                    <video autoplay muted loop playsinline>
+                    <source src="Média3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                    </video>
+                </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">Smart Workout Builder</h3>
+            <p class="project-card__description">A Java EE fitness planner that builds a weekly workout split based on goal, level, equipment, and injuries. It dynamically selects exercises from a database, displays daily volume intensity bars, and includes a coach chatbot.</p>
+            <div class="project-card__tech"><span>Servlets</span><span>JSP</span><span>CSS Grid</span></div>
+            <div class="project-card__links">
+                <a href="https://github.com/bouassidachayma/smart-workout-builder.git" class="project-card__link" target="_blank">GitHub →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="container reveal">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="timeline__item">
+          <div class="timeline__date">2025 – Present</div>
+          <h3 class="timeline__title">Frontend Developer & UI/UX Designer</h3>
+          <div class="timeline__company">Business Casual Project · Agile Team</div>
+          <p class="timeline__description">Built the entire user interface, smooth navigation, and optimized UX. Collaborated with backend to integrate intelligent filtering and chatbot.</p>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__date">2024 – Present</div>
+          <h3 class="timeline__title">Freelance Web Developer</h3>
+          <div class="timeline__company">Self-employed</div>
+          <p class="timeline__description">Created modern, responsive websites for small businesses. Focus on user-friendly design and performance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="container reveal">
+      <h2 class="section-title">Education</h2>
+      <ul class="education-list">
+        <li>Baccalauréat Mathématiques – Tunisie (2022)</li>
+        <li>Cycle préparatoire MP d'études ingénieur – Faculté des Sciences de Sfax (2022-2025)</li>
+        <li>Web Developer certification – Gomycode (2025)</li>
+        <li>Bachelor's in Génie Logiciel & SI – Faculty of Sciences of Sfax (2025-2026, in progress)</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="container reveal">
+      <h2 class="section-title">Let's Connect</h2>
+      <ul class="contact-links">
+        <li><a href="mailto:bouassida.chayma@gmail.com">Email</a></li>
+        <li><a href="https://github.com/bouassidachayma" target="_blank">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/chayma-bouassida" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/chayma.bouassida" target="_blank">Instagram</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Chayma Bouassida</p>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark');
+      themeToggle.textContent = '☀️';
+    }
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.getElementById('downloadCV')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Add your CV PDF file to enable download.');
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
