@@ -607,10 +607,6 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // CV download now uses the direct link (no alert)
-    // The download button already points to CV_Chayma_Bouassida.pdf, so we remove the preventDefault
-    // But keep the existing logic for other anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
