@@ -4,7 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chayma Bouassida | Frontend Developer & UI/UX Designer</title>
+  <meta name="description" content="Chayma Bouassida — Frontend Developer & UI/UX Designer. Portfolio of web, Android and AI-powered projects including PayAssist AI, Smart Diet Planner, and Smart Workout Builder.">
+  <meta property="og:title" content="Chayma Bouassida | Frontend Developer & UI/UX Designer">
+  <meta property="og:description" content="Portfolio of web, Android and AI-powered projects.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chayma Bouassida",
+    "jobTitle": "Frontend Developer & UI/UX Designer",
+    "email": "mailto:bouassida.chayma@gmail.com",
+    "sameAs": [
+      "https://github.com/bouassidachayma",
+      "https://www.linkedin.com/in/chayma-bouassida",
+      "https://www.instagram.com/chayma.bouassida"
+    ]
+  }
+  </script>
   <style>
     * {
       margin: 0;
@@ -68,6 +87,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 0;
+      position: relative;
     }
     .logo {
       font-family: 'Playfair Display', serif;
@@ -106,6 +126,11 @@
     .nav__links a:hover {
       color: var(--accent-dark);
     }
+    .nav__right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
     .theme-toggle {
       background: var(--accent-soft);
       border: none;
@@ -115,6 +140,15 @@
       font-size: 1.2rem;
       transition: var(--transition);
       color: var(--accent-dark);
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--accent-dark);
+      padding: 4px 8px;
     }
 
     .hero {
@@ -212,12 +246,23 @@
       border-radius: 4px;
     }
 
+    .skills-group {
+      margin-bottom: 2.5rem;
+    }
+    .skills-group__label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
     .skills-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
-      margin: 2rem 0 3rem;
     }
     .skills-list span {
       background: var(--accent-soft);
@@ -259,7 +304,6 @@
       background: linear-gradient(135deg, #fbe9e7 0%, #f8d0d0 100%);
       overflow: hidden;
     }
-    /* Images inside project cards */
     .project-card__media img {
       width: 100%;
       height: 100%;
@@ -382,6 +426,152 @@
       color: var(--text-secondary);
     }
 
+    .project-card {
+      cursor: pointer;
+    }
+    .project-card__media {
+      cursor: zoom-in;
+    }
+
+    .project-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 20, 20, 0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      backdrop-filter: blur(4px);
+    }
+    .project-modal.open {
+      display: flex;
+    }
+    .project-modal__panel {
+      position: relative;
+      background: var(--card-bg);
+      border-radius: 24px;
+      max-width: min(720px, 92vw);
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      animation: lightboxIn 0.25s ease;
+    }
+    @keyframes lightboxIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .project-modal__img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .project-modal__body {
+      padding: 1.8rem;
+    }
+    .project-modal__body h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--text-primary);
+    }
+    .project-modal__body p {
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+    .project-modal__tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .project-modal__tech span {
+      background: var(--bg-secondary);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent-dark);
+    }
+    .project-modal__links {
+      display: flex;
+      gap: 1.2rem;
+    }
+    .project-modal__links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--accent-dark);
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+    .project-modal__links a:hover {
+      text-decoration: underline;
+      color: var(--accent);
+    }
+    .project-modal__close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.85);
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.6rem;
+      line-height: 1;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 1;
+    }
+    .project-modal__close:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .contact-form {
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-form__row {
+      display: flex;
+      gap: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.8rem 1.1rem;
+      transition: var(--transition);
+      resize: vertical;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .contact-form button {
+      align-self: center;
+      margin-top: 0.4rem;
+    }
+    .contact-form__status {
+      text-align: center;
+      font-size: 0.9rem;
+      min-height: 1.2em;
+      color: var(--accent-dark);
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(25px);
@@ -404,11 +594,37 @@
       .hero__title {
         font-size: 2rem;
       }
+      .nav-toggle {
+        display: block;
+      }
       .nav__links {
-        gap: 1rem;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border);
+        padding: 0.5rem 0;
+      }
+      .nav__links.open {
+        display: flex;
+      }
+      .nav__links li {
+        width: 100%;
+        text-align: center;
+      }
+      .nav__links a {
+        display: block;
+        padding: 0.8rem 1rem;
       }
       .projects__grid {
         grid-template-columns: 1fr;
+      }
+      .contact-form__row {
+        flex-direction: column;
       }
     }
   </style>
@@ -417,13 +633,16 @@
   <header class="header">
     <div class="nav container">
       <a href="#" class="logo">Chayma Bouassida</a>
-      <ul class="nav__links">
+      <ul class="nav__links" id="navLinks">
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Dark mode">🌙</button>
+      <div class="nav__right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
     </div>
   </header>
 
@@ -438,44 +657,55 @@
         </div>
       </div>
       <div class="hero__image">
-        <img src="photo personelle.jpg" alt="Chayma Bouassida">
+        <img src="profile-photo.jpg" alt="Chayma Bouassida">
       </div>
     </section>
 
     <section class="container reveal">
       <h2 class="section-title">Tech & Tools</h2>
-      <div class="skills-list">
-        <span>HTML5/CSS3</span><span>JavaScript</span><span>Java</span>
-        <span>Java EE (Servlets, JSP)</span><span>Kotlin</span><span>Android</span>
-        <span>MySQL</span><span>PL/SQL</span><span>SQLite</span><span>PHP</span>
-        <span>Git & GitHub</span><span>FastAPI</span><span>LangChain</span>
-        <span>Responsive Design</span><span>Agile Methodologies</span><span>Problem Solving</span>
-        <span>Team Collaboration</span><span>Adaptability</span><span>Strong Communication</span>
-        <span>Continuous Learning</span><span>Time Management</span>
+
+      <div class="skills-group">
+        <p class="skills-group__label">Technical</p>
+        <div class="skills-list">
+          <span>HTML5/CSS3</span><span>JavaScript</span><span>Java</span>
+          <span>Java EE (Servlets, JSP)</span><span>Kotlin</span><span>Android</span>
+          <span>MySQL</span><span>PL/SQL</span><span>SQLite</span><span>PHP</span>
+          <span>Git & GitHub</span><span>FastAPI</span><span>LangChain</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group__label">Professional</p>
+        <div class="skills-list">
+          <span>Responsive Design</span><span>Agile Methodologies</span><span>Problem Solving</span>
+          <span>Team Collaboration</span><span>Adaptability</span><span>Strong Communication</span>
+          <span>Continuous Learning</span><span>Time Management</span>
+        </div>
       </div>
     </section>
 
     <section id="projects" class="container reveal">
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects__grid">
-        <!-- Personal Portfolio with image -->
-         <div class="project-card">
-            <div class="project-card__media">
-                <img src="photo4.png" alt="Personal Portfolio homepage">
-            </div>
-            <div class="project-card__content">
-                <h3 class="project-card__title">Personal Portfolio</h3>
-                <p class="project-card__description">A personal portfolio website. It features a clean design, responsive layout, and smooth animations to showcase projects and skills.</p>
-                <div class="project-card__tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                <div class="project-card__links">
-                <a href="https://github.com/bouassidachayma/portfolio" class="project-card__link" target="_blank">GitHub →</a>
-                </div>
-            </div>
-          </div>
-        <!-- Business Casual with image -->
+        <!-- Personal Portfolio -->
         <div class="project-card">
           <div class="project-card__media">
-            <img src="photo1.png" alt="Business Casual meal platform screenshot">
+            <img src="photo4.png" alt="Personal Portfolio website homepage with hero section and project cards" loading="lazy">
+          </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">Personal Portfolio</h3>
+            <p class="project-card__description">A personal portfolio website. It features a clean design, responsive layout, and smooth animations to showcase projects and skills.</p>
+            <div class="project-card__tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <div class="project-card__links">
+              <a href="https://github.com/bouassidachayma/portfolio" class="project-card__link" target="_blank">GitHub →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Casual -->
+        <div class="project-card">
+          <div class="project-card__media">
+            <img src="photo1.png" alt="Business Casual meal platform dashboard showing personalized meal recommendations" loading="lazy">
           </div>
           <div class="project-card__content">
             <h3 class="project-card__title">Business Casual – Meal Platform</h3>
@@ -483,10 +713,11 @@
             <div class="project-card__tech"><span>Angular</span><span>Node.js</span><span>SQLite</span><span>PostMan</span></div>
           </div>
         </div>
-        <!-- Smart Diet Planner with image -->
+
+        <!-- Smart Diet Planner -->
         <div class="project-card">
           <div class="project-card__media">
-            <img src="photo2.png" alt="Smart Diet Planner dashboard">
+            <img src="photo2.png" alt="Smart Diet Planner dashboard with calorie progress bars and 7-day meal plan" loading="lazy">
           </div>
           <div class="project-card__content">
             <h3 class="project-card__title">Smart Diet Planner</h3>
@@ -497,10 +728,11 @@
             </div>
           </div>
         </div>
-        <!-- Smart Workout Builder with image -->
+
+        <!-- Smart Workout Builder -->
         <div class="project-card">
           <div class="project-card__media">
-            <img src="photo3.png" alt="Smart Workout Builder interface">
+            <img src="photo3.png" alt="Smart Workout Builder interface showing weekly workout split and volume intensity bars" loading="lazy">
           </div>
           <div class="project-card__content">
             <h3 class="project-card__title">Smart Workout Builder</h3>
@@ -511,21 +743,22 @@
             </div>
           </div>
         </div>
-      </div>
-      <!--PayAssist AI – TELNET Internship Project -->
-      <div class="project-card">
-        <div class="project-card__media">
-          <img src="photo5.jpg" alt="PayAssist AI – Android app screenshot">
-        </div>
-        <div class="project-card__content">
-          <h3 class="project-card__title">PayAssist AI – TELNET Internship</h3>
-          <p class="project-card__description">Intelligent merchant & terminal support chatbot — an Android app with a Retrieval-Augmented Generation (RAG) backend. Built for Mall of Sfax merchants during an 8-week summer internship at TELNET INC.</p>
-          <div class="project-card__tech">
-            <span>Kotlin</span><span>Jetpack Compose</span><span>FastAPI</span>
-            <span>LangChain</span><span>ChromaDB</span><span>Ollama</span>
+
+        <!-- PayAssist AI – TELNET Internship Project -->
+        <div class="project-card">
+          <div class="project-card__media">
+            <img src="photo5.jpg" alt="PayAssist AI Android app screen showing merchant support chatbot interface" loading="lazy">
           </div>
-          <div class="project-card__links">
-            <a href="https://github.com/bouassidachayma/PayAssistAI" class="project-card__link" target="_blank">GitHub →</a>
+          <div class="project-card__content">
+            <h3 class="project-card__title">PayAssist AI – TELNET Internship</h3>
+            <p class="project-card__description">Intelligent merchant & terminal support chatbot — an Android app with a Retrieval-Augmented Generation (RAG) backend. Built for Mall of Sfax merchants during an 8-week summer internship at TELNET INC.</p>
+            <div class="project-card__tech">
+              <span>Kotlin</span><span>Jetpack Compose</span><span>FastAPI</span>
+              <span>LangChain</span><span>ChromaDB</span><span>Ollama</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/bouassidachayma/PayAssistAI" class="project-card__link" target="_blank">GitHub →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -535,10 +768,10 @@
       <h2 class="section-title">Experience</h2>
       <div class="timeline">
         <div class="timeline__item">
-          <div class="timeline__date">2025 – Present</div>
-          <h3 class="timeline__title">My Portfolio</h3>
-          <div class="timeline__company">Self-employed</div>
-          <p class="timeline__description">Developed a personal portfolio website to showcase projects and skills.</p>
+          <div class="timeline__date">July – August 2026</div>
+          <h3 class="timeline__title">Software Developer Intern</h3>
+          <div class="timeline__company">TELNET INC – Mall of Sfax</div>
+          <p class="timeline__description">Developed PayAssist AI: an Android app with RAG backend (FastAPI + LangChain + Ollama) for merchant terminal support. Built with Kotlin, Jetpack Compose, and ChromaDB. Deployed to ~45 merchants.</p>
         </div>
         <div class="timeline__item">
           <div class="timeline__date">2026</div>
@@ -551,12 +784,6 @@
           <h3 class="timeline__title">Freelance Web Developer</h3>
           <div class="timeline__company">Self-employed</div>
           <p class="timeline__description">Created modern, responsive websites for small businesses. Focus on user-friendly design and performance.</p>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__date">July – August 2026</div>
-          <h3 class="timeline__title">Software Developer Intern</h3>
-          <div class="timeline__company">TELNET INC – Mall of Sfax</div>
-          <p class="timeline__description">Developed PayAssist AI: an Android app with RAG backend (FastAPI + LangChain + Ollama) for merchant terminal support. Built with Kotlin, Jetpack Compose, and ChromaDB. Deployed to ~45 merchants.</p>
         </div>
       </div>
     </section>
@@ -573,8 +800,17 @@
 
     <section id="contact" class="container reveal">
       <h2 class="section-title">Let's Connect</h2>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/moeaznoe" method="POST">
+        <div class="contact-form__row">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+        </div>
+        <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+        <button type="submit" class="button button--primary">Send Message</button>
+        <p class="contact-form__status" id="formStatus"></p>
+      </form>
       <ul class="contact-links">
-        <li><a href="tel:+216 97 565 632">Phone</a></li>
+        <li><a href="tel:+21697565632">Phone</a></li>
         <li><a href="mailto:bouassida.chayma@gmail.com">Email</a></li>
         <li><a href="https://github.com/bouassidachayma" target="_blank">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/chayma-bouassida" target="_blank">LinkedIn</a></li>
@@ -586,6 +822,19 @@
   <footer class="footer">
     <p>© Chayma Bouassida</p>
   </footer>
+
+  <div class="project-modal" id="projectModal">
+    <div class="project-modal__panel">
+      <button class="project-modal__close" id="modalClose" aria-label="Close">&times;</button>
+      <img src="" alt="" class="project-modal__img" id="modalImg">
+      <div class="project-modal__body">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+        <div class="project-modal__tech" id="modalTech"></div>
+        <div class="project-modal__links" id="modalLinks"></div>
+      </div>
+    </div>
+  </div>
 
   <script>
     const themeToggle = document.getElementById('themeToggle');
@@ -601,18 +850,90 @@
       localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
     });
 
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    const modal = document.getElementById('projectModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalTech = document.getElementById('modalTech');
+    const modalLinks = document.getElementById('modalLinks');
+    const modalClose = document.getElementById('modalClose');
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return; // let GitHub links work normally
+
+        const img = card.querySelector('.project-card__media img');
+        const title = card.querySelector('.project-card__title');
+        const description = card.querySelector('.project-card__description');
+        const tech = card.querySelector('.project-card__tech');
+        const links = card.querySelector('.project-card__links');
+
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modalTitle.textContent = title ? title.textContent : '';
+        modalDescription.textContent = description ? description.textContent : '';
+        modalTech.innerHTML = tech ? tech.innerHTML : '';
+        modalLinks.innerHTML = links ? links.innerHTML : '';
+
+        modal.classList.add('open');
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modalImg.src = '';
+    }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formStatus.textContent = 'Sending...';
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          formStatus.textContent = 'Thanks! Your message has been sent.';
+          contactForm.reset();
+        } else {
+          formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+        }
+      } catch (err) {
+        formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+      }
+    });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('active');
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth' });
+          navLinks.classList.remove('open');
         }
       });
     });
