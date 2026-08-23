@@ -686,10 +686,11 @@
     <section id="projects" class="container reveal">
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects__grid">
+
         <!-- Personal Portfolio -->
         <div class="project-card">
           <div class="project-card__media">
-            <img src="photo4.png" alt="Personal Portfolio website homepage with hero section and project cards" loading="lazy">
+            <img src="personal-portfolio.png" alt="Personal Portfolio website homepage with hero section and project cards" loading="lazy">
           </div>
           <div class="project-card__content">
             <h3 class="project-card__title">Personal Portfolio</h3>
@@ -701,26 +702,27 @@
           </div>
         </div>
 
-        <!-- Business Casual -->
+        <!-- Business Casual – NO LINKS (removed) -->
         <div class="project-card">
           <div class="project-card__media">
-            <img src="photo1.png" alt="Business Casual meal platform dashboard showing personalized meal recommendations" loading="lazy">
+            <img src="business-casual.png" alt="Business Casual meal platform dashboard showing personalized meal recommendations" loading="lazy">
           </div>
           <div class="project-card__content">
             <h3 class="project-card__title">Business Casual – Meal Platform</h3>
             <p class="project-card__description">Personalized meal plans based on health profile, allergies, and goals. Includes intelligent recommendations, chatbot, and nutrition info.</p>
             <div class="project-card__tech"><span>Angular</span><span>Node.js</span><span>SQLite</span><span>PostMan</span></div>
+            <!-- No links – you can add them later if you create a repo or demo -->
           </div>
         </div>
 
         <!-- Smart Diet Planner -->
         <div class="project-card">
           <div class="project-card__media">
-            <img src="photo2.png" alt="Smart Diet Planner dashboard with calorie progress bars and 7-day meal plan" loading="lazy">
+            <img src="smart-diet-planner.png" alt="Smart Diet Planner dashboard with calorie progress bars and 7-day meal plan" loading="lazy">
           </div>
           <div class="project-card__content">
             <h3 class="project-card__title">Smart Diet Planner</h3>
-            <p class="project-card__description">A Java EE web app that generates personalized 7‑day meal plans. Users input their profile, health conditions, and allergies; the system queries a MySQL database of 46 meals and filters them accordingly. Features an animated UI, calorie progress bars, a nutrition chatbot, and full authentication (login/register with session filter).</p>
+            <p class="project-card__description">A Java EE web app that generates personalized 7‑day meal plans. Users input their profile, health conditions, and allergies; the system queries a MySQL database of 46 meals and filters accordingly. Features an animated UI, calorie progress bars, a nutrition chatbot, and full authentication (login/register with session filter).</p>
             <div class="project-card__tech"><span>Servlets</span><span>JSP</span><span>JDBC</span><span>MySQL</span></div>
             <div class="project-card__links">
               <a href="https://github.com/bouassidachayma/smart-diet-planner.git" class="project-card__link" target="_blank">GitHub →</a>
@@ -731,7 +733,7 @@
         <!-- Smart Workout Builder -->
         <div class="project-card">
           <div class="project-card__media">
-            <img src="photo3.png" alt="Smart Workout Builder interface showing weekly workout split and volume intensity bars" loading="lazy">
+            <img src="smart-workout-builder.png" alt="Smart Workout Builder interface showing weekly workout split and volume intensity bars" loading="lazy">
           </div>
           <div class="project-card__content">
             <h3 class="project-card__title">Smart Workout Builder</h3>
@@ -746,7 +748,7 @@
         <!-- PayAssist AI – TELNET Internship Project -->
         <div class="project-card">
           <div class="project-card__media">
-            <img src="photo5.jpg" alt="PayAssist AI Android app screen showing merchant support chatbot interface" loading="lazy">
+            <img src="payassist-ai.jpg" alt="PayAssist AI Android app screen showing merchant support chatbot interface" loading="lazy">
           </div>
           <div class="project-card__content">
             <h3 class="project-card__title">PayAssist AI – TELNET Internship</h3>
@@ -791,9 +793,9 @@
       <h2 class="section-title">Education</h2>
       <ul class="education-list">
         <li>Baccalauréat Mathématiques – Tunisie (2022)</li>
-        <li>Cycle préparatoire MP d'études ingénieur – Faculté des Sciences de Sfax (2022-2025)</li>
+        <li>Cycle préparatoire MP d'études ingénieur – Faculté des Sciences de Sfax (2022–2025)</li>
         <li>Web Developer certification – Gomycode (2025)</li>
-        <li>Bachelor's in Génie Logiciel & Systèmes d'Information – Faculty of Sciences of Sfax (2025-in progress)</li>
+        <li>Bachelor's in Génie Logiciel & Systèmes d'Information – Faculty of Sciences of Sfax (2025–Present)</li>
       </ul>
     </section>
 
@@ -819,7 +821,7 @@
   </main>
 
   <footer class="footer">
-    <p>© Chayma Bouassida</p>
+    <p>© 2026 Chayma Bouassida</p>
   </footer>
 
   <div class="project-modal" id="projectModal">
@@ -866,7 +868,7 @@
 
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        if (e.target.closest('a')) return; // let GitHub links work normally
+        if (e.target.closest('a')) return;
 
         const img = card.querySelector('.project-card__media img');
         const title = card.querySelector('.project-card__title');
